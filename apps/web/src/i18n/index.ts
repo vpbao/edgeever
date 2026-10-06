@@ -11,7 +11,6 @@ import {
   type SupportedLocale,
 } from "./locales";
 import { enUS } from "./resources/en-US";
-import { zhCN } from "./resources/zh-CN";
 
 export {
   defaultLocale,
@@ -23,7 +22,6 @@ export {
 } from "./locales";
 
 export const resources = {
-  "zh-CN": { translation: zhCN },
   "en-US": { translation: enUS },
 } as const;
 
@@ -72,9 +70,8 @@ export const bootstrapI18n = async () => {
 };
 
 export const changeAppLocale = async (locale: SupportedLocale) => {
-  writeStoredLocale(locale);
-  await ensureLocaleCatalog(locale);
-  return i18n.changeLanguage(locale);
+  writeStoredLocale(defaultLocale);
+  return i18n.changeLanguage(defaultLocale);
 };
 
 export const changeAppLocalePreference = async (preference: AppLocalePreference) => {

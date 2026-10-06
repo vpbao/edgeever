@@ -18,7 +18,7 @@ export const sharedFileTitle = (filename: string) => {
 const escapeLabel = (value: string) => value.replace(/[\\[\]]/g, "\\$&");
 
 export const sharedFileAttachmentMarkdown = (filename: string, url: string) =>
-  `[附件：${escapeLabel(filename || "file")}](${url})`;
+  `[Attachment: ${escapeLabel(filename || "file")}](${url})`;
 
 const isImageFile = (filename: string, mimeType: string) =>
   mimeType.toLowerCase().startsWith("image/") || IMAGE_EXTENSIONS.has(extensionOf(filename));

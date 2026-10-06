@@ -296,13 +296,13 @@ export const deleteNotebookRecord = async (
   if (!current) throw new AppError("not_found", "Notebook not found", 404);
   if (isInboxNotebook(current, workspaceId)) {
     if (current.is_deleted) return;
-    throw new AppError("bad_request", "等待分类不能删除。", 400);
+    throw new AppError("bad_request", "The Inbox notebook cannot be deleted.", 400);
   }
 
   const tree = await listActiveNotebookTree(db, workspaceId, id);
   if (tree.length === 0) return;
   if (tree.some((notebook) => isInboxNotebook(notebook, workspaceId))) {
-    throw new AppError("bad_request", "等待分类不能删除。", 400);
+    throw new AppError("bad_request", "The Inbox notebook cannot be deleted.", 400);
   }
 
   const notebookIds = tree.map((notebook) => notebook.id);

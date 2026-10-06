@@ -73,7 +73,7 @@ describe("workspace provisioning", () => {
     expect(calls.some((call) => call.sql.includes("INSERT OR IGNORE INTO ai_prompt_templates"))).toBe(true);
   });
 
-  test("seeds Japanese templates when Accept-Language prefers Japanese", () => {
+  test("seeds English templates when Accept-Language prefers Japanese", () => {
     const calls = [];
     const db = {
       prepare: (sql) => statement(sql, calls),
@@ -86,7 +86,7 @@ describe("workspace provisioning", () => {
       "ja-JP,ja;q=0.9",
     );
 
-    expect(calls[0].values).toContain("ひらめきメモ");
+    expect(calls[0].values).toContain("Quick Spark");
   });
 
   test("seeds English templates when Accept-Language is unmatched", () => {

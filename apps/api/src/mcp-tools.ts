@@ -156,7 +156,7 @@ const MCP_TOOL_DEFINITIONS = [
   },
   {
     name: "search_memos",
-    description: "Search active EdgeEver memos by text, tag, notebook, time range, pin state, or resource presence. query is optional. For recently created or added notes, pass createdAfter and omit query; do not put this week/最近/新增 in query. Time bounds accept YYYY-MM-DD or ISO date-time.",
+    description: "Search active EdgeEver memos by text, tag, notebook, time range, pin state, or resource presence. query is optional. For recently created or added notes, pass createdAfter and omit query; do not put relative time phrases such as this week or recently added in query. Time bounds accept YYYY-MM-DD or ISO date-time.",
     inputSchema: {
       type: "object",
       additionalProperties: false,
@@ -313,7 +313,7 @@ const MCP_TOOL_DEFINITIONS = [
   {
     name: "create_infographic_memo",
     description:
-      "Create an AntV infographic note (信息图). Use this for 信息图, infographic, 占比, 构成, 饼图, 柱状图, 折线图, 对比, 四象限, 时间线, and a process infographic. Do not use create_diagram_memo, create_memo, or a mind map. Use chart-pie-donut-plain-text with data.values for a share or 占比; chart-column-simple for columns; chart-line-plain-text for a trend; compare-binary-horizontal-badge-card-vs for two subjects with matched children; compare-quadrant-quarter-simple-card for four quadrants; sequence-timeline-rounded-rect-node for a timeline; sequence-steps-simple for steps; list-grid-simple for a parallel list; hierarchy-tree-tech-style-capsule-item for a tree; relation-network-simple-circle-node for a network. Fill only the data array that matches the template. data.title is the note title. If the user did not supply the figures, say in data.desc that the values are illustrative and are not an official disclosure. 思维导图, 流程图, and 架构图 still use create_diagram_memo.",
+      "Create an AntV infographic note (infographic). Use this for infographics, proportions, compositions, pie charts, column charts, line charts, comparisons, quadrants, timelines, and a process infographic. Do not use create_diagram_memo, create_memo, or a mind map. Use chart-pie-donut-plain-text with data.values for a share or proportion; chart-column-simple for columns; chart-line-plain-text for a trend; compare-binary-horizontal-badge-card-vs for two subjects with matched children; compare-quadrant-quarter-simple-card for four quadrants; sequence-timeline-rounded-rect-node for a timeline; sequence-steps-simple for steps; list-grid-simple for a parallel list; hierarchy-tree-tech-style-capsule-item for a tree; relation-network-simple-circle-node for a network. Fill only the data array that matches the template. data.title is the note title. If the user did not supply the figures, say in data.desc that the values are illustrative and are not an official disclosure. mind maps, flowcharts, and architecture diagrams still use create_diagram_memo.",
     inputSchema: {
       type: "object",
       required: ["notebookId", "template", "data"],

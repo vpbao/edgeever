@@ -1343,9 +1343,9 @@ export const enUS = {
         replace: "Replace selected text",
         stale: "The note changed, so this was not written.",
         chips: {
-          "zh-CN": "中文",
+          "zh-CN": "Chinese",
           en: "English",
-          ja: "日本語",
+          ja: "Japanese",
         },
         languageNames: {
           "zh-CN": "Simplified Chinese",

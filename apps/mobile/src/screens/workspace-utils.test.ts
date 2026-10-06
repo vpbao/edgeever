@@ -67,7 +67,7 @@ describe("mobile workspace utilities", () => {
     expect(isEnglishMobileLocale("en-US")).toBe(true);
   });
 
-  test("resolves Japanese system languages to Japanese and unmatched languages to English", () => {
+  test("resolves system languages to English for this instance", () => {
     const original = Intl.DateTimeFormat.prototype.resolvedOptions;
     const withLocale = (locale: string) => {
       Intl.DateTimeFormat.prototype.resolvedOptions = function resolvedOptions() {
@@ -76,7 +76,7 @@ describe("mobile workspace utilities", () => {
     };
     try {
       withLocale("ja-JP");
-      expect(getResolvedMobileLocale("system")).toBe("ja");
+      expect(getResolvedMobileLocale("system")).toBe("en-US");
       expect(isEnglishMobileLocale("system")).toBe(true);
       withLocale("fr-FR");
       expect(getResolvedMobileLocale("system")).toBe("en-US");

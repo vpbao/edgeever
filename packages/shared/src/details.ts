@@ -139,7 +139,7 @@ const remoteVideoFromSrc = (src: string): RemoteVideo | null => {
   const filename = segment || "video";
   return {
     src: url,
-    label: `附件：${filename}`,
+    label: `Attachment: ${filename}`,
     filename,
     mimeType: resolveVideoMimeType(null, filename) ?? "video/mp4",
   };

@@ -1,4 +1,4 @@
-import { DEFAULT_MEMO_TITLE } from "@edgeever/shared";
+import { DEFAULT_MEMO_TITLE, LEGACY_DEFAULT_MEMO_TITLE } from "@edgeever/shared";
 import { enUS, ja, zhCN } from "@edgeever/shared/i18n";
 import { resolveSupportedLocale } from "@edgeever/shared/i18n/locales";
 import { createContext, useContext, useEffect, useMemo, useState, type ReactNode } from "react";
@@ -522,10 +522,10 @@ export const localizeUntitledMemoTitle = (
   locale: SupportedMobileLocale,
 ) => {
   const trimmed = title?.trim() ?? "";
-  if (trimmed && trimmed !== DEFAULT_MEMO_TITLE) {
+  if (trimmed && trimmed !== DEFAULT_MEMO_TITLE && trimmed !== LEGACY_DEFAULT_MEMO_TITLE) {
     return trimmed;
   }
-  return translateMobileText(DEFAULT_MEMO_TITLE, locale);
+  return translateMobileText(LEGACY_DEFAULT_MEMO_TITLE, locale);
 };
 
 export const localizeMissingNotebookName = (locale: SupportedMobileLocale) => {

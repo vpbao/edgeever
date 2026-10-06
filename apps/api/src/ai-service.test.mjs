@@ -40,8 +40,8 @@ describe("AI model service", () => {
       "simplify-language",
       "summarize",
     ]);
-    // Shared seed catalog is the user-visible source of truth (Chinese defaults).
-    expect(aiActionInstructions.summarize).toContain("精简总结");
+    // Shared seed catalog is the user-visible source of truth (English defaults).
+    expect(aiActionInstructions.summarize).toContain("condensed summary");
     expect(aiActionInstructions.summarize).toContain("20–30%");
     expect(aiActionInstructions["extract-todos"]).toContain("- [ ]");
     expect(resolveAiGenerationSystemInstruction({

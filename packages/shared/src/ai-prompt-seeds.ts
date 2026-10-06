@@ -14,7 +14,7 @@ export type AiPromptSeedTranslation = {
   instruction: string;
 };
 
-/** Factory prompt metadata. The top-level text is the Simplified Chinese fallback for legacy callers. */
+/** Factory prompt metadata. The top-level text is the English fallback for legacy callers. */
 export type AiPromptSeed = AiPromptSeedTranslation & {
   key: AiPromptSeedKey;
   action: AiPromptSeedKey;
@@ -30,7 +30,7 @@ const seed = (
   ja: AiPromptSeedTranslation,
 ): AiPromptSeed => ({
   ...metadata,
-  ...zhCN,
+  ...enUS,
   translations: { "zh-CN": zhCN, "en-US": enUS, ja },
 });
 

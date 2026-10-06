@@ -69,9 +69,9 @@ describe("diagram document", () => {
 
   test("persists a Mermaid fallback in the portable Markdown envelope", () => {
     const markdown = serializeDiagramDocument(createDefaultDiagramDocument("flowchart"));
-    expect(markdown).toContain("# 流程图");
+    expect(markdown).toContain("# Flowchart");
     expect(markdown).toContain("```mermaid\nflowchart TD");
-    expect(markdown).toContain('n1["处理步骤"]');
+    expect(markdown).toContain('n1["Process step"]');
     expect(markdown).toContain("classDef flowProcess fill:#FFFFFF,stroke:#D4D4D4,color:#212121");
     expect(markdown).toContain("classDef flowTerminator fill:#707070,stroke:#707070,color:#FFFFFF");
     expect(markdown).toContain("class n1 flowProcess");
@@ -171,13 +171,13 @@ describe("diagram document", () => {
     expect(parsed.schemaVersion).toBe(2);
     expect(parsed.nodes.find((node) => node.id === "api").parentId).toBe("system");
     expect(parsed.edges.find((edge) => edge.id === "request").kind).toBe("request");
-    expect(diagramFallbackMarkdown(document)).toContain("# 架构图");
+    expect(diagramFallbackMarkdown(document)).toContain("# Architecture diagram");
     const fallback = diagramDocumentToMermaid(document);
-    expect(fallback).toContain('subgraph n0["应用系统"]');
-    expect(fallback).toContain('shape: display, label: "Web 客户端"');
-    expect(fallback).toContain('shape: st-rect, label: "API 服务"');
-    expect(fallback).toContain('shape: cyl, label: "数据库"');
-    expect(fallback).toContain('shape: disk, label: "对象存储"');
+    expect(fallback).toContain('subgraph n0["Application"]');
+    expect(fallback).toContain('shape: display, label: "Web client"');
+    expect(fallback).toContain('shape: st-rect, label: "API service"');
+    expect(fallback).toContain('shape: cyl, label: "Database"');
+    expect(fallback).toContain('shape: disk, label: "Object storage"');
     expect(fallback).toContain("classDef archDatabase");
   });
 

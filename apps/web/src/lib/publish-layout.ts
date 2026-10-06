@@ -956,10 +956,10 @@ export const buildPublishStyles = (
 };
 
 const THEME_BLOCK_LABELS: Record<string, string> = {
-  intro: "引言",
-  "key-point": "重点观点",
-  callout: "提示",
-  chapter: "章节",
+  intro: "Introduction",
+  "key-point": "Key point",
+  callout: "Callout",
+  chapter: "Chapter",
 };
 
 const themeBlockStyles = (
@@ -1707,7 +1707,7 @@ const applyThemeBlocks = (
     block.style.cssText = `${styles.block}${block.style.cssText}`;
     const label = root.ownerDocument.createElement("p");
     label.setAttribute("data-ee-publish-chrome", "true");
-    label.textContent = THEME_BLOCK_LABELS[kind] || "主题组件";
+    label.textContent = THEME_BLOCK_LABELS[kind] || "Themed component";
     label.style.cssText = styles.label;
     block.insertBefore(label, block.firstChild);
   });

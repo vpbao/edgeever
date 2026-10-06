@@ -649,7 +649,7 @@ export const MobileStandaloneTiptapEditor = ({
               type: "edgeeverPdfAttachment",
               attrs: {
                 url: resource.url,
-                label: `附件：${resource.filename || file.name}`,
+                label: `Attachment: ${resource.filename || file.name}`,
                 filename: resource.filename || file.name,
                 mimeType: resource.mimeType || file.type || "application/pdf",
                 byteSize: resource.byteSize,
@@ -669,7 +669,7 @@ export const MobileStandaloneTiptapEditor = ({
               type: "edgeeverFileAttachment",
               attrs: {
                 url: resource.url,
-                label: `附件：${filename}`,
+                label: `Attachment: ${filename}`,
                 filename,
                 mimeType: file.type,
                 byteSize: resource.byteSize,

@@ -120,12 +120,12 @@ const createApp = ({ currentAuth = auth, demoMode = false } = {}) => {
 describe("AI prompt template routes", () => {
   test("keeps the starter catalog focused on six common workflows", () => {
     expect(DEFAULT_AI_PROMPT_SEEDS.map((prompt) => [prompt.key, prompt.name])).toEqual([
-      ["summarize", "精简总结"],
-      ["translate", "全文翻译"],
-      ["improve-writing", "润色表达"],
-      ["make-shorter", "精炼表达"],
-      ["extract-todos", "提取待办"],
-      ["continue-writing", "继续写作"],
+      ["summarize", "Summarize"],
+      ["translate", "Translate"],
+      ["improve-writing", "Polish"],
+      ["make-shorter", "Make concise"],
+      ["extract-todos", "Extract tasks"],
+      ["continue-writing", "Continue writing"],
     ]);
   });
 
@@ -456,8 +456,8 @@ describe("AI prompt template routes", () => {
       (prompt) => prompt.seedKey === "summarize",
     );
     expect(chineseSummary).toMatchObject({
-      name: "精简总结",
-      description: "压缩全文，提炼主题、结论与可执行结果",
+      name: "Summarize",
+      description: "Condense the note into its topic, conclusions, and actionable outcomes",
       instruction: "Only this instruction was customized before the metadata migration.",
     });
 
@@ -466,8 +466,8 @@ describe("AI prompt template routes", () => {
       (prompt) => prompt.seedKey === "summarize",
     );
     expect(japaneseSummary).toMatchObject({
-      name: "要約する",
-      description: "テーマ、結論、実行できる結果に圧縮する",
+      name: "Summarize",
+      description: "Condense the note into its topic, conclusions, and actionable outcomes",
       instruction: "Only this instruction was customized before the metadata migration.",
     });
   });
@@ -553,8 +553,8 @@ describe("AI prompt template routes", () => {
       (prompt) => prompt.seedKey === "summarize",
     );
     expect(chineseSummary).toMatchObject({
-      name: "精简总结",
-      description: "压缩全文，提炼主题、结论与可执行结果",
+      name: "Summarize",
+      description: "Condense the note into its topic, conclusions, and actionable outcomes",
       nameCustomized: false,
       descriptionCustomized: false,
       instructionCustomized: false,

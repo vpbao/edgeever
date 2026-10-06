@@ -32,23 +32,23 @@ describe("supported locale matching", () => {
 });
 
 describe("supported locale resolution", () => {
-  test("keeps Chinese as the empty default and English as the unmatched fallback", () => {
-    expect(defaultLocale).toBe("zh-CN");
+  test("uses English for both missing and explicit locale preferences", () => {
+    expect(defaultLocale).toBe("en-US");
     expect(unmatchedLocale).toBe("en-US");
-    expect(resolveSupportedLocale(null)).toBe("zh-CN");
-    expect(resolveSupportedLocale("")).toBe("zh-CN");
-    expect(resolveSupportedLocale("ja-JP")).toBe("ja");
+    expect(resolveSupportedLocale(null)).toBe("en-US");
+    expect(resolveSupportedLocale("")).toBe("en-US");
+    expect(resolveSupportedLocale("ja-JP")).toBe("en-US");
     expect(resolveSupportedLocale("ko")).toBe("en-US");
     expect(resolveSupportedLocale("de-DE")).toBe("en-US");
   });
 
-  test("walks browser or Accept-Language candidate lists in preference order", () => {
+  test("parses language preferences while resolving this instance to English", () => {
     expect(parseAcceptLanguage("ja-JP,ja;q=0.9,en-US;q=0.8")).toEqual(["ja-JP", "ja", "en-US"]);
-    expect(resolveSupportedLocaleFromCandidates(["ja-JP", "en-US"])).toBe("ja");
-    expect(resolveSupportedLocaleFromCandidates(["fr-FR", "ja-JP"])).toBe("ja");
+    expect(resolveSupportedLocaleFromCandidates(["ja-JP", "en-US"])).toBe("en-US");
+    expect(resolveSupportedLocaleFromCandidates(["fr-FR", "ja-JP"])).toBe("en-US");
     expect(resolveSupportedLocaleFromCandidates(["fr-FR", "de-DE"])).toBe("en-US");
-    expect(resolveSupportedLocale("ja-JP,zh-CN;q=0.8")).toBe("ja");
+    expect(resolveSupportedLocale("ja-JP,zh-CN;q=0.8")).toBe("en-US");
     expect(resolveSupportedLocale("fr-FR,fr;q=0.9")).toBe("en-US");
-    expect(resolveSupportedLocale("zh-CN,zh;q=0.9,en;q=0.8")).toBe("zh-CN");
+    expect(resolveSupportedLocale("zh-CN,zh;q=0.9,en;q=0.8")).toBe("en-US");
   });
 });

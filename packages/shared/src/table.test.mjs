@@ -39,7 +39,7 @@ describe("structured table documents", () => {
     const markdown = `${tableFallbackMarkdown(createDefaultTableDocument())}\n\n<!-- edgeever-table-v1:not-json -->`;
     expect(parseTableDocument(markdown)).toBeNull();
     expect(hasTableDocumentMarker(markdown)).toBe(true);
-    expect(stripTableDocumentMarker(markdown)).toContain("| 名称 |");
+    expect(stripTableDocumentMarker(markdown)).toContain("| Name |");
     expect(getTableSummary(markdown)).toEqual({ structuredTable: false });
   });
 
@@ -54,7 +54,7 @@ describe("structured table documents", () => {
       sort: { fieldId: "fld_date", direction: "desc" },
     });
     expect(applyTableView(document).map((record) => record.id)).toEqual(["rec_next"]);
-    expect(parseTableDocument("| 名称 |\n| --- |\n| 普通表格 |")).toBeNull();
+    expect(parseTableDocument("| Name |\n| --- |\n| 普通表格 |")).toBeNull();
   });
 
   test("coerces cells when a field type changes and refuses to remove the last field", () => {
@@ -73,7 +73,7 @@ describe("structured table documents", () => {
   test("summarizes a table note for the memo list", () => {
     expect(getTableSummary(serializeTableDocument(createDefaultTableDocument()))).toEqual({
       structuredTable: true,
-      tablePreview: { fieldCount: 3, recordCount: 1, fieldNames: ["名称", "状态", "日期"] },
+      tablePreview: { fieldCount: 3, recordCount: 1, fieldNames: ["Name", "Status", "Date"] },
     });
   });
 

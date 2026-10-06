@@ -1,12 +1,10 @@
 import {
   defaultLocale as sharedDefaultLocale,
-  matchSupportedLocale,
   resolveSupportedLocaleFromCandidates,
-  supportedLocales as sharedSupportedLocales,
   type SupportedLocale as SharedSupportedLocale,
 } from "@edgeever/shared/i18n/locales";
 
-export const supportedLocales = sharedSupportedLocales;
+export const supportedLocales: readonly SharedSupportedLocale[] = ["en-US"];
 
 export type SupportedLocale = SharedSupportedLocale;
 export type AppLocalePreference = "system" | SupportedLocale;
@@ -17,13 +15,13 @@ export const localeStorageKey = "edgeever.locale.preference";
 const legacyLocaleStorageKey = "edgeever.locale";
 
 export const localeLabels: Record<SupportedLocale, string> = {
-  "zh-CN": "简体中文",
+  "zh-CN": "Chinese",
   "en-US": "English",
-  ja: "日本語",
+  ja: "Japanese",
 };
 
 export const normalizeLocale = (locale: string | null | undefined): SupportedLocale | null =>
-  matchSupportedLocale(locale);
+  locale?.trim() ? "en-US" : null;
 
 export const readStoredLocale = (): SupportedLocale | null => {
   try {

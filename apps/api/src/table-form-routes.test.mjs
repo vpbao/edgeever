@@ -76,7 +76,7 @@ describe("public table forms", () => {
     const listed = await app.request(`/api/public/forms/${token}`, {}, environment);
     expect(listed.status).toBe(200);
     const body = JSON.stringify(await listed.json());
-    expect(body).toContain("名称");
+    expect(body).toContain("Name");
     expect(body).not.toContain("示例记录");
 
     const submitted = await app.request(`/api/public/forms/${token}/submissions`, {

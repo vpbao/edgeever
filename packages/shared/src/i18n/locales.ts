@@ -3,7 +3,7 @@ export const supportedLocales = ["zh-CN", "en-US", "ja"] as const;
 export type SupportedLocale = (typeof supportedLocales)[number];
 
 /** Used when there is no locale evidence (legacy callers, missing headers). */
-export const defaultLocale: SupportedLocale = "zh-CN";
+export const defaultLocale: SupportedLocale = "en-US";
 
 /** Used when locale evidence exists but is not a shipped UI language. */
 export const unmatchedLocale: SupportedLocale = "en-US";
@@ -39,25 +39,8 @@ export const parseAcceptLanguage = (value: string): string[] =>
 export const resolveSupportedLocaleFromCandidates = (
   candidates: readonly (string | null | undefined)[],
 ): SupportedLocale => {
-  let sawCandidate = false;
-
-  for (const candidate of candidates) {
-    if (!candidate || !candidate.trim()) {
-      continue;
-    }
-
-    sawCandidate = true;
-
-    for (const tag of parseAcceptLanguage(candidate)) {
-      const matched = matchSupportedLocale(tag);
-
-      if (matched) {
-        return matched;
-      }
-    }
-  }
-
-  return sawCandidate ? unmatchedLocale : defaultLocale;
+  // This deployment uses English regardless of client language preferences.
+  return defaultLocale;
 };
 
 export const resolveSupportedLocale = (locale?: string | null): SupportedLocale =>

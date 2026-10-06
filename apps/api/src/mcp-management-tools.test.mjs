@@ -276,9 +276,9 @@ describe("MCP template and AI instruction management", () => {
 
     const added = await callMcpTool(context, auth, "add_table_record", {
       memoId, expectedRevision: first.revision,
-      cells: { fld_name: "读一本书", fld_status: "进行中" },
+      cells: { fld_name: "读一本书", fld_status: "In progress" },
     });
-    expect(added.record).toMatchObject({ id: added.recordId, cells: { fld_name: "读一本书", fld_status: "进行中" } });
+    expect(added.record).toMatchObject({ id: added.recordId, cells: { fld_name: "读一本书", fld_status: "In progress" } });
     const page = await callMcpTool(context, auth, "get_table_records", { memoId, offset: 1, limit: 1 });
     expect(page.records.map((record) => record.id)).toEqual([added.recordId]);
     const byId = await callMcpTool(context, auth, "get_table_records", { memoId, recordId: added.recordId });
@@ -286,9 +286,9 @@ describe("MCP template and AI instruction management", () => {
 
     const changed = await callMcpTool(context, auth, "update_table_record", {
       memoId, recordId: added.recordId, expectedRevision: added.revision,
-      cells: { fld_status: "完成", fld_date: "2026-09-30" },
+      cells: { fld_status: "Done", fld_date: "2026-09-30" },
     });
-    expect(changed.record.cells).toMatchObject({ fld_name: "读一本书", fld_status: "完成", fld_date: "2026-09-30" });
+    expect(changed.record.cells).toMatchObject({ fld_name: "读一本书", fld_status: "Done", fld_date: "2026-09-30" });
     const deleted = await callMcpTool(context, auth, "delete_table_record", {
       memoId, recordId: added.recordId, expectedRevision: changed.revision,
     });

@@ -28,7 +28,7 @@ describe("merged memo title", () => {
 
   test("uses a dated merge title when every source is untitled", () => {
     expect(resolveMergedMemoTitle(undefined, [{ title: null }, { title: "无标题笔记" }], new Date(2026, 7, 2)))
-      .toBe("合并笔记 2026/8/2");
+      .toBe("Merged notes 8/2/2026");
   });
 });
 
